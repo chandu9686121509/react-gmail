@@ -126,12 +126,11 @@ var MainComponent=React.createClass({
   render:function(){
     console.log("This is a Parent");
     return(
-      <div className="container">
-                <div className="row">
-
+      <div className="container" >
+                <div className="row" >
                     <GmailBox/>
-                    </div>
                 </div>
+      </div>
         );
     }
 });

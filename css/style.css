@@ -1,0 +1,46 @@
+.panel-body{
+  margin-top: 90px;
+  width: 300px;
+}
+
+a{
+    text-align: center;
+}
+
+#wrap{
+    word-wrap: break-word;
+}
+
+h6{
+    color:blue;
+}
+
+#MyFile{
+    color: brown;
+}
+
+#tit{
+    margin-top: 80px;
+    text-align: center;
+    text-transform: uppercase;
+    color:#339933;
+}
+
+#desc{
+    margin-top: 80px;
+    text-align: center;
+    color:#8A2BE2;
+}
+#gmail{
+    color:#FF4500;
+}
+#mail{
+    color:#CC99FF;
+}
+table{
+    border-width: "2px";
+}
+
+h2{
+  color: Red;
+}

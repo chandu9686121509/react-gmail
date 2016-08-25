@@ -1,21 +1,24 @@
 var React= require('react');
-
+var GrantChild=require('./GrantChild');
 var LeftPanel= React.createClass({
-   render: function(){
+  handleEvent:function(labelId)
+  {
+    this.props.getEmailByLabel(labelId);
+  },
 
-       var productsArr =this.props.allLabelsData.map(function(e,i){
-       //return(<a href="">{e.name}</a>);
+   render: function(){
+      var carr =this.props.allLabelsData.map(function(message){
        return(
-           <div key={i}>
-               <a key={i} href="#">{e.name}</a>
+           <div>
+               <GrantChild id={message.id} name={message.name} handleEvent={this.handleEvent}></GrantChild>
            </div>
        )
-       });
+     },this);
 
        return(
-           <div className="panel panel-default">
-               {productsArr}
-           </div>
+         <div>
+              {carr}
+        </div>
        );
    }
    });
