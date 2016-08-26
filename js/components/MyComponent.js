@@ -10,5 +10,5 @@ var MyComponent=React.createClass({
 
   );
 }
-})
+});
 module.exports=MyComponent;

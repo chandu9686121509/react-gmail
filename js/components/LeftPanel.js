@@ -1,9 +1,9 @@
 var React= require('react');
 var GrantChild=require('./GrantChild');
 var LeftPanel= React.createClass({
-  handleEvent:function(labelId)
+  handleEvent:function(llabelIds)
   {
-    this.props.getEmailByLabel(labelId);
+    this.props.getEmailByLabel(llabelIds);
   },
 
    render: function(){
