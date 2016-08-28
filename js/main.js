@@ -1,7 +1,5 @@
 var React=require('react');
 var ReactDOM=require('react-dom');
-var ChildComponent=require('./components/ChildComponent');
-var MyComponent=require('./components/MyComponent');
 var LeftPanel=require('./components/LeftPanel');
 var GmailBox=require('./components/GmailBox');
 

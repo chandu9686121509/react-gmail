@@ -3,6 +3,37 @@
   width: 300px;
 }
 
+#iframe-message{
+     display: block;
+     width: 100%;
+     height: 50%;
+     border: none;
+     overflow-y: auto;
+     overflow-x: hidden;
+   }
+
+   #fromTo{
+     color: #8A2BE2;
+   }
+
+   #LeftAnchor{
+    text-align: center;
+}
+
+#rules{
+    resize: both;
+    width: 400px;
+    overflow: auto;
+    border: 1px solid;
+    padding: 10px;
+    float:  none;
+    margin-left: 80px;
+}
+
+#myRightAnchor{
+  color: #00FF00;
+}
+
 a{
     text-align: center;
 }

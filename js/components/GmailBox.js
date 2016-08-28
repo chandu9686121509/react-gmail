@@ -128,13 +128,54 @@ var GmailBox = React.createClass({
    return c;
  },
 
+ sentMessages: function(to,sub,body)
+{
+    console.log("to"+to);
+    console.log("sub"+sub);
+    console.log("body"+body);
+
+    var accessToken = localStorage.getItem('gToken');
+     console.log("Access token: "+accessToken);
+     var email = '';
+     var Headers = {'To': to,'Subject': sub};
+     for(var header in Headers)
+     {
+       email += header += ": "+Headers[header]+"\r\n";
+       console.log("email---"+email);
+       console.log("header---"+header);
+       console.log("Headers[header]---"+Headers[header]);
+     }
+     email += "\r\n" + this.state.msgData;
+     console.log("constructed email: " +email);
+     var encodedMessage =  window.btoa(email).replace(/\+/g, '-').replace(/\//g, '_');
+
+    var c = $.ajax({
+        url: 'https://www.googleapis.com/gmail/v1/users/chandu.k15%40gmail.com/messages/send?key={AIzaSyBZJ407yGDmT0-MdRE3Kj3Ea72FCnvd68w}',
+        dataType: 'json',
+        contentType: "application/json",
+        type: 'POST',
+        data: JSON.stringify({'raw': encodedMessage}),
+        async:false,
+        beforeSend: function (request)
+        {
+          request.setRequestHeader("Authorization", "Bearer "+accessToken);
+        },
+        success: function(data){
+            console.log("Success");
+        }.bind(this),
+        error: function(xhr, status, err){
+            console.error(err.toString());
+        }.bind(this)
+    })
+},
+
 render:function()
  {
    var leftPanel;
    var rightPanel;
 
    if(loadedData){
-     leftPanel =  <LeftPanel allLabelsData={this.state.allLabelsData} getEmailByLabel={this.getEmailByLabel}/>
+     leftPanel =  <LeftPanel allLabelsData={this.state.allLabelsData} getEmailByLabel={this.getEmailByLabel} sentMessages={this.sentMessages}/>
      rightPanel=  <RightPanel fullMessages={this.state.fullMessages}/>
    }
 
@@ -144,6 +185,7 @@ render:function()
              <div className="row">
                  <div className="col-lg-1">
                     <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-danger pull-left">Sign In</button>
+                    <a href="#" type="button" data-target="#ComposeModal" data-toggle="modal" className="btn btn-primary pull-left">Compose</a>
                 </div>
                   <div className="col-lg-8 pull-right">
                     <h2>GMail</h2>
